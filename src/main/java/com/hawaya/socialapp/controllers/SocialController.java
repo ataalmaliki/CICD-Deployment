@@ -27,6 +27,16 @@ public class SocialController {
         return userService.login(email, password);
     }
 
+    @GetMapping("/welcome")
+    public String test() {
+        return "welcome";
+    }
+
+    @GetMapping("/hello")
+    public String test2() {
+        return "hello";
+    }
+
     @PostMapping("/users/{userId}/post")
     public Long addPost(@PathVariable Long userId, @RequestBody PostDTO postDTO) {
         return postService.addPost(userId, postDTO);
