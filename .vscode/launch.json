@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SocialappApplication<socialapp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.hawaya.socialapp.SocialappApplication",
+            "projectName": "socialapp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SocialappApplication<ocp-tutorial>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.hawaya.socialapp.SocialappApplication",
+            "projectName": "ocp-tutorial",
+            "args": ""
+        }
+    ]
+}

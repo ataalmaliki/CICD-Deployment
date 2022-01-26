@@ -1,6 +1,5 @@
 package com.hawaya.socialapp.exception;
 
-
 public class BusinessException extends RuntimeException {
 
     private String code;
@@ -29,7 +28,8 @@ public class BusinessException extends RuntimeException {
         this.message = message;
     }
 
-    public BusinessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String code, String message1) {
+    public BusinessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace,
+            String code, String message1) {
         super(message, cause, enableSuppression, writableStackTrace);
         this.code = code;
         this.message = message1;

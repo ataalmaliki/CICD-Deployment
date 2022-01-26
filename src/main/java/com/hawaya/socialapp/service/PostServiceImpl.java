@@ -20,17 +20,15 @@ public class PostServiceImpl {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
 
-
-    public Long addPost(Long userId, PostDTO postDTO) {
+    public PostDTO addPost(Long userId, PostDTO postDTO) {
         Post post = socialMapper.postDTOToPost(postDTO);
-        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessException("User Not found", "1001"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessException("1001", "User Not Found"));
         post.setUser(user);
-        post = postRepository.save(post);
-        return post.getId();
+        return socialMapper.postToPostDTO(postRepository.save(post));
     }
 
     public List<PostDTO> getPosts(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessException("User Not found", "1001"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessException("1001", "User Not Found"));
         return socialMapper.postListToPostDTOList(postRepository.findAllByUser(user));
     }
 

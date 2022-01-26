@@ -9,43 +9,36 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1")
+@RequiredArgsConstructor
 public class SocialController {
 
     private final UserServiceImpl userService;
     private final PostServiceImpl postService;
 
     @PostMapping("/users/register")
-    public Long register(@RequestBody UserDTO userDTO) {
+    public UserDTO register(@RequestBody UserDTO userDTO) {
         return userService.register(userDTO);
     }
 
+    @GetMapping("/users")
+    public List<UserDTO> getUsers() {
+        return userService.getUsers();
+    }
+
     @GetMapping("/users/login")
-    public boolean login(String email, String password) {
+    public UserDTO login(@RequestParam String email, @RequestParam String password) {
         return userService.login(email, password);
     }
 
-    @GetMapping("/welcome")
-    public String test() {
-        return "welcome";
-    }
-
-    @GetMapping("/hello")
-    public String test2() {
-        return "hello";
-    }
-
     @PostMapping("/users/{userId}/post")
-    public Long addPost(@PathVariable Long userId, @RequestBody PostDTO postDTO) {
+    public PostDTO addPost(@PathVariable Long userId, @RequestBody PostDTO postDTO) {
         return postService.addPost(userId, postDTO);
     }
 
-    @PostMapping("/users/{userId}/posts")
+    @GetMapping("/users/{userId}/posts")
     public List<PostDTO> getPosts(@PathVariable Long userId) {
         return postService.getPosts(userId);
     }
-
-
 }

@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class SocialControlAdvise {
 
-    @ExceptionHandler(value = {BusinessException.class})
+    @ExceptionHandler(value = { BusinessException.class })
     public ResponseEntity<Object> handleSAExceptions(BusinessException exception) {
-
         return new ResponseEntity<Object>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
